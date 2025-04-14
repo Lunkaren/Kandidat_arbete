@@ -1,8 +1,9 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify, send_from_directory
+import os
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'  # Change for other DBs
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -19,4 +20,19 @@ class Video(db.Model):
         db.create_all()
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("base.html")
+@app.route("/videos")
+def get_videos():
+    videos = Video.query.all()
+    video_list = [
+        {
+            "title": video.title,
+            "file_path":f"/videos/{os.path.basename(video.file_path)}.mp4"
+
+        }for video in videos
+    ]
+    return jsonify(video_list)
+@app.route("/videos/<path:filename>")
+def serve_video(filename):
+    return send_from_directory("videos", filename)
+
