@@ -1,2 +1,7 @@
-<h1>Video Library</h1>
-    <div id="video-container"></div>
+<div id="imagePreview">
+    <form id="upload_image" method="post" enctype="multipart/form-data" action="{{url_for('upload_image')}}">
+        <input type="file" name="image" accept="image/*"  required/>
+        <button type="submit">Upload image</button>
+    </form>
+</div>
+<div id="video-container"></div>
