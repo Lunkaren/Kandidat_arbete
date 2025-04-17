@@ -1,5 +1,6 @@
-from flask import Flask, render_template, jsonify, send_from_directory
+from flask import Flask, render_template, jsonify, send_from_directory, current_app, blueprints
 import os
+import sys
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -20,7 +21,7 @@ class Video(db.Model):
         db.create_all()
 @app.route("/")
 def home():
-    return render_template("base.html")
+    return render_template("index.html")
 @app.route("/videos")
 def get_videos():
     videos = Video.query.all()
