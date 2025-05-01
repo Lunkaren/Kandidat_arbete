@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, jsonify, send_from_directory, request, redirect,url_for
+from flask import Flask, render_template, jsonify, send_from_directory, request
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
 
