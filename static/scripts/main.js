@@ -18,18 +18,29 @@ document.addEventListener("DOMContentLoaded", () => {
         previewContainer.innerHTML = "";
 
         const titleElement = document.createElement("h3");
-        titleElement.textContent = title;
-
         const videoElement = document.createElement("video");
         videoElement.src = path;
-        videoElement.controls = true;
-        videoElement.width = 480;
+        videoElement.controls = false;
+        videoElement.width = 500;
         videoElement.autoplay = true;
+        videoElement.loop = true;
+        videoElement.height = 400;
+        videoElement.addEventListener("click", (e) => {
+            e.preventDefault();
+        })
 
         previewContainer.appendChild(titleElement);
         previewContainer.appendChild(videoElement);
+        const download = document.getElementById('download');
+
+        if (download.classList.contains('activate')){
+            console.log("download already has class. Doing nothing instead.");
+        }else{
+            download.classList.add('activate');
+        }
     });
 });
+
 document.getElementById('upload_image').addEventListener('submit', function(e) {
   e.preventDefault();
 
@@ -47,6 +58,7 @@ document.getElementById('upload_image').addEventListener('submit', function(e) {
     preview.style.backgroundImage = `url(${data.image_url})`;
     preview.style.backgroundSize = 'cover';
     preview.style.backgroundPosition = 'center';
+    preview.title = "Change image";
     choose.style.height = '400px';
     choose.style.width = '500px';
     choose.style.text = ' ';
@@ -54,6 +66,7 @@ document.getElementById('upload_image').addEventListener('submit', function(e) {
     choose.value = '';
 
     document.getElementById('previews').classList.add('show');
+    document.getElementById('select_effect').classList.add('show');
     document.getElementById('upload').classList.remove('show');
 
   })
@@ -63,10 +76,7 @@ document.getElementById('upload_image').addEventListener('submit', function(e) {
 document.getElementById('choose_image').addEventListener('change', function(e){
 
 const uploadButton = document.getElementById('upload');
-
-
  if (this.files.length > 0) {
         uploadButton.classList.add('show');
-
     }
 });

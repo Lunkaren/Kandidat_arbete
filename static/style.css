@@ -45,11 +45,43 @@ li {
     align-content: center;
 }
 #previews{
-    margin-top: 250px;
     align-content: center;
     text-align: center;
     display:none;
+    font-weight: bold;
+}
+h2{
+    color: black;
+    margin-top: 150px;
+    display: none;
+    align-content: center;
+    text-align: center;
+}
+#preview_video {
+    width: 500px;
+    height: 400px;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    text-align: center;
+    align-content: center;
+    margin-left: 50px;
 }
 .show {
-    display: block !important;
+    display: flex !important;
+    justify-content: center;
 }
+#download.activate{
+    pointer-events: all;
+    background: white;
+    color: black;
+}
+#download{
+    pointer-events: none;
+    background: dimgray;
+    color: gray;
+}
+#download:hover{
+
+}
+
