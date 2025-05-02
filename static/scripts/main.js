@@ -1,28 +1,46 @@
 document.addEventListener("DOMContentLoaded", () => {
-    fetch("/videos")
-        .then(response => response.json())
-        .then(data => {
-            const container = document.getElementById("video-container");
+    const previewContainer = document.getElementById("preview_video");
+    const previewList = document.getElementById("previews");
 
-            data.forEach(video => {
-                const wrapper = document.createElement("div");
-                const title = document.createElement("h3");
-                title.textContent = video.title;
-                const vid = document.createElement("video");
+    const videoMap = {
+        zoom:     { title: "Zoom-In",       path: "/videos/zoom.mp4" },
+        circular: { title: "Circular Pan",  path: "/videos/circle.mp4" },
+        swing:    { title: "Swing",         path: "/videos/swing.mp4" },
+        dolly:    { title: "Dolly Zoom",    path: "/videos/dolly.mp4" }
+    };
 
-                vid.src = video.file_path;
-                vid.controls = true;
-                vid.width = 480;
+    previewList.addEventListener("click", (e) => {
+        const li = e.target.closest("li");
+        if (!li || !videoMap[li.id]) return;
 
-                wrapper.appendChild(title);
-                wrapper.appendChild(vid);
-                container.appendChild(wrapper);
-            });
+        const { title, path } = videoMap[li.id];
+
+        previewContainer.innerHTML = "";
+
+        const titleElement = document.createElement("h3");
+        const videoElement = document.createElement("video");
+        videoElement.src = path;
+        videoElement.controls = false;
+        videoElement.width = 500;
+        videoElement.autoplay = true;
+        videoElement.loop = true;
+        videoElement.height = 400;
+        videoElement.addEventListener("click", (e) => {
+            e.preventDefault();
         })
-        .catch(error =>{
-      console.error("Error loading videos:", error);
+
+        previewContainer.appendChild(titleElement);
+        previewContainer.appendChild(videoElement);
+        const download = document.getElementById('download');
+
+        if (download.classList.contains('activate')){
+            console.log("download already has class. Doing nothing instead.");
+        }else{
+            download.classList.add('activate');
+        }
     });
 });
+
 document.getElementById('upload_image').addEventListener('submit', function(e) {
   e.preventDefault();
 
@@ -36,9 +54,29 @@ document.getElementById('upload_image').addEventListener('submit', function(e) {
   .then(response => response.json())
   .then(data => {
     const preview = document.getElementById('imagePreview');
+    const choose = document.getElementById('choose_image');
     preview.style.backgroundImage = `url(${data.image_url})`;
     preview.style.backgroundSize = 'cover';
     preview.style.backgroundPosition = 'center';
+    preview.title = "Change image";
+    choose.style.height = '400px';
+    choose.style.width = '500px';
+    choose.style.text = ' ';
+    choose.style.opacity = '0';
+    choose.value = '';
+
+    document.getElementById('previews').classList.add('show');
+    document.getElementById('select_effect').classList.add('show');
+    document.getElementById('upload').classList.remove('show');
+
   })
   .catch(error => console.error('Fel vid uppladdning:', error));
+});
+
+document.getElementById('choose_image').addEventListener('change', function(e){
+
+const uploadButton = document.getElementById('upload');
+ if (this.files.length > 0) {
+        uploadButton.classList.add('show');
+    }
 });
