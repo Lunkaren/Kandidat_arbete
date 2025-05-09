@@ -13,11 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const li = e.target.closest("li");
         if (!li || !videoMap[li.id]) return;
 
-        const { title, path } = videoMap[li.id];
+        const { path } = videoMap[li.id];
 
         previewContainer.innerHTML = "";
 
-        const titleElement = document.createElement("h3");
         const videoElement = document.createElement("video");
         videoElement.src = path;
         videoElement.controls = false;
@@ -29,7 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
         })
 
-        previewContainer.appendChild(titleElement);
         previewContainer.appendChild(videoElement);
         const download = document.getElementById('download');
 
