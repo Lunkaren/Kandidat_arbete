@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
         dolly:    { title: "Dolly Zoom",    path: "/videos/dolly.mp4" }
     };
 
-    previewList.addEventListener("click", (e) => {
+    document.addEventListener("click", (e) => {
         const li = e.target.closest("li");
         if (!li || !videoMap[li.id]) return;
 
@@ -37,6 +37,28 @@ document.addEventListener("DOMContentLoaded", () => {
             download.classList.add('activate');
         }
     });
+});
+document.getElementById('download').addEventListener('click', () => {
+    const videoElement = document.querySelector('#preview_video video');
+
+    if (!videoElement) {
+        alert("No video loaded!");
+        return;
+    }
+
+    const videoSrc = videoElement.src;
+
+    if (!videoSrc) {
+        alert("No video source found.");
+        return;
+    }
+
+    const a = document.createElement('a');
+    a.href = videoSrc;
+    a.download = 'effect_video.mp4';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
 });
 
 
@@ -67,7 +89,7 @@ document.getElementById('upload_image').addEventListener('submit', function(e) {
     choose.value = '';
 
     document.getElementById('previews').classList.add('show');
-    document.getElementById('select_effect').classList.add('show');
+    document.getElementById('select_effect_label').classList.add('show');
     document.getElementById('upload').classList.remove('show');
 
   })
@@ -83,6 +105,7 @@ const fileName = document.getElementById('imagePreview')
         fileName.textContent = this.files[0].name;
         fileName.style.backgroundImage = 'none';
     }else{
+     uploadButton.classList.remove('show');
      fileName.textContent = "Choose file";
  }
 });

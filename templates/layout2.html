@@ -3,30 +3,35 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/layout2.css') }}">
 {% endblock %}
 {% block content %}
-        <ul id="select_preview">
-            <li id="zoom">Zoom-In</li>
-            <li id="circular">Circular pan</li>
-            <li id="swing">Swing</li>
-            <li id="dolly">Dolly zoom</li>
-        </ul>
+    <div id="top">
+        <div id="image_effect_select">
+            <ul id="select_effect">
+                <li id="zoom">Zoom-In</li>
+                <li id="circular">Circular pan</li>
+                <li id="swing">Swing</li>
+                <li id="dolly">Dolly zoom</li>
+            </ul>
 
-        <form id="upload_image" method="post" enctype="multipart/form-data" action="{{url_for('upload_image')}}">
-            <div id="imagePreview">
-                <input id="choose_image" type="file" name="image" accept="image/*" required>
-            </div>
-            <button id="upload" type="submit">Upload image</button>
-        </form>
+            <form id="upload_image" method="post" enctype="multipart/form-data" action="{{url_for('upload_image')}}">
+                <input id="choose_image" type="file" name="image" accept="image/*"  required/>
+                <div id="imagePreview">Choose image</div>
+                <button id="upload" type="submit" style="display: none;">Upload image</button>
+            </form>
+            <button id="download">Download</button>
+        </div>
+    </div>
 
-    <button id="download">Download</button>
-
-    <div id="previews">
-        <ul id="select_preview">
-            <li id="zoom">Zoom-In</li>
-            <li id="circular">Circular pan</li>
-            <li id="swing">Swing</li>
-            <li id="dolly">Dolly zoom</li>
-        </ul>
-        <div id="preview_video">Select effect to view</div>
+    <div id="bottom">
+        <h2 id="effect_preview_label"> Preview effects</h2>
+        <div id="previews">
+            <div id="preview_video">Select effect to view</div>
+            <ul id="select_preview">
+                <li id="zoom">Zoom-In</li>
+                <li id="circular">Circular pan</li>
+                <li id="swing">Swing</li>
+                <li id="dolly">Dolly zoom</li>
+            </ul>
+        </div>
     </div>
 
 {% endblock %}

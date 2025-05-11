@@ -3,9 +3,11 @@ body {
     align-content: center;
     background-color: #3c3f41;
     padding: 40px;
-    color: #e0e0e0	;
+    color: #aaaaaa	;
+    text-shadow: 0 0 10px #c7c7c7;
     border-color: #2c2f31;
     text-align: center;
+
 }
 
 h1,h2 {
@@ -42,19 +44,21 @@ h1,h2 {
 li:hover {
   box-shadow: 0 0 20px #b85cff;
   transform: scale(1.05);
+    text-shadow: none;
 }
 li{
     background-color: #b85cff;
+    width: 100px;
+    height: 40px;
+    color: #1e1e1e;
+    border-style: solid;
+    border-radius: 25px;
+    align-content: center;
 }
 #previews{
     align-content: center;
     display:none;
     font-weight: bold;
-}
-h2{
-    margin-top: 150px;
-    display: none;
-    align-content: center;
 }
 #preview_video {
     padding: 0;
@@ -65,8 +69,6 @@ h2{
     border-style: solid;
     align-content: center;
     margin-left: 50px;
-    color: #aaaaaa	;
-    text-shadow: 0 0 10px #c7c7c7;
 }
 .show {
     display: flex !important;
