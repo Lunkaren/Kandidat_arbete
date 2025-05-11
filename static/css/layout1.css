@@ -1,0 +1,12 @@
+ul{
+    list-style: none;
+    align-content: center;
+}
+li {
+    width: 100px;
+    height: 40px;
+    color: #1e1e1e;
+    border-style: solid;
+    border-radius: 25px;
+    align-content: center;
+}

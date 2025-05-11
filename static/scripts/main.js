@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+
 document.getElementById('upload_image').addEventListener('submit', function(e) {
   e.preventDefault();
 
@@ -57,6 +58,8 @@ document.getElementById('upload_image').addEventListener('submit', function(e) {
     preview.style.backgroundSize = 'cover';
     preview.style.backgroundPosition = 'center';
     preview.title = "Change image";
+    preview.textContent = "";
+
     choose.style.height = '400px';
     choose.style.width = '500px';
     choose.style.text = ' ';
@@ -74,7 +77,15 @@ document.getElementById('upload_image').addEventListener('submit', function(e) {
 document.getElementById('choose_image').addEventListener('change', function(e){
 
 const uploadButton = document.getElementById('upload');
+const fileName = document.getElementById('imagePreview')
  if (this.files.length > 0) {
         uploadButton.classList.add('show');
-    }
+        fileName.textContent = this.files[0].name;
+        fileName.style.backgroundImage = 'none';
+    }else{
+     fileName.textContent = "Choose file";
+ }
+});
+document.getElementById('imagePreview').addEventListener('click', function(){
+    document.getElementById('choose_image').click();
 });

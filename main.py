@@ -27,10 +27,15 @@ class Video(db.Model):
 
     with app.app_context():
         db.create_all()
-@app.route("/", methods=['GET'])
-def index():
+@app.route("/l1", methods=['GET'])
+def layout1():
     image = Image.query.order_by(Image.id.desc()).first()
-    return render_template("index.html", image=image)
+    return render_template("layout1.html", image=image)
+@app.route("/l2", methods=['GET'])
+def layout2():
+    image = Image.query.order_by(Image.id.desc()).first()
+    return render_template("layout2.html", image=image)
+
 @app.route("/videos")
 def get_videos():
     videos = Video.query.all()
