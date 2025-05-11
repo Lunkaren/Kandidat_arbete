@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
         dolly:    { title: "Dolly Zoom",    path: "/videos/dolly.mp4" }
     };
 
-    previewList.addEventListener("click", (e) => {
+    document.addEventListener("click", (e) => {
         const li = e.target.closest("li");
         if (!li || !videoMap[li.id]) return;
 
@@ -38,6 +38,29 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+document.getElementById('download').addEventListener('click', () => {
+    const videoElement = document.querySelector('#preview_video video');
+
+    if (!videoElement) {
+        alert("No video loaded!");
+        return;
+    }
+
+    const videoSrc = videoElement.src;
+
+    if (!videoSrc) {
+        alert("No video source found.");
+        return;
+    }
+
+    const a = document.createElement('a');
+    a.href = videoSrc;
+    a.download = 'effect_video.mp4';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+});
+
 
 document.getElementById('upload_image').addEventListener('submit', function(e) {
   e.preventDefault();
@@ -57,6 +80,8 @@ document.getElementById('upload_image').addEventListener('submit', function(e) {
     preview.style.backgroundSize = 'cover';
     preview.style.backgroundPosition = 'center';
     preview.title = "Change image";
+    preview.textContent = "";
+
     choose.style.height = '400px';
     choose.style.width = '500px';
     choose.style.text = ' ';
@@ -64,7 +89,7 @@ document.getElementById('upload_image').addEventListener('submit', function(e) {
     choose.value = '';
 
     document.getElementById('previews').classList.add('show');
-    document.getElementById('select_effect').classList.add('show');
+    document.getElementById('select_effect_label').classList.add('show');
     document.getElementById('upload').classList.remove('show');
 
   })
@@ -74,7 +99,16 @@ document.getElementById('upload_image').addEventListener('submit', function(e) {
 document.getElementById('choose_image').addEventListener('change', function(e){
 
 const uploadButton = document.getElementById('upload');
+const fileName = document.getElementById('imagePreview')
  if (this.files.length > 0) {
         uploadButton.classList.add('show');
-    }
+        fileName.textContent = this.files[0].name;
+        fileName.style.backgroundImage = 'none';
+    }else{
+     uploadButton.classList.remove('show');
+     fileName.textContent = "Choose file";
+ }
+});
+document.getElementById('imagePreview').addEventListener('click', function(){
+    document.getElementById('choose_image').click();
 });

@@ -1,0 +1,9 @@
+ul{
+    list-style: none;
+    align-content: center;
+}
+#select_effect_label{
+    display: none;
+    margin-top: 150px;
+    align-content: center;
+}

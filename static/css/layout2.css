@@ -1,0 +1,35 @@
+#bottom{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+#image_effect_select{
+    display: flex;
+    justify-content: center;
+}
+ul{
+    list-style: none;
+    align-content: center;
+}
+#select_effect{
+        height: 370px;
+}
+#select_effect li {
+    background-color: rgba(114,215,230);
+    margin-right: 50px;
+}
+#select_effect li:hover {
+    box-shadow: 0 0 20px rgba(121,240,255,0.7);
+}
+#effect_preview_label{
+    margin-top: 200px;
+}
+#previews{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+#select_preview{
+    display: flex;
+    flex-direction: row;
+}
