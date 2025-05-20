@@ -96,7 +96,6 @@ document.getElementById('upload_image').addEventListener('submit', function(e) {
 
     document.getElementById('previews').classList.add('show');
     document.getElementById('select_effect_label').classList.add('show');
-    document.getElementById('upload').classList.remove('show');
 
   })
   .catch(error => console.error('Fel vid uppladdning:', error));
@@ -107,7 +106,7 @@ document.getElementById('choose_image').addEventListener('change', function(e){
 const uploadButton = document.getElementById('upload');
 const fileName = document.getElementById('imagePreview')
  if (this.files.length > 0) {
-        uploadButton.classList.add('show');
+        uploadButton.click();
         fileName.textContent = this.files[0].name;
         fileName.style.backgroundImage = 'none';
     }else{
