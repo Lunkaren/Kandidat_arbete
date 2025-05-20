@@ -3,35 +3,38 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/layout2.css') }}">
 {% endblock %}
 {% block content %}
-    <div id="top">
-        <div id="image_effect_select">
-            <ul id="select_effect">
-                <li id="zoom">Zoom-In</li>
-                <li id="circular">Circular pan</li>
-                <li id="swing">Swing</li>
-                <li id="dolly">Dolly zoom</li>
-            </ul>
-
+    <div id="both">
+        <div id="left">
+            <h2 id="effect_preview_label"> Preview effects</h2>
+            <img id="spaceman" src="{{ url_for('static', filename='uploads/spaceman.png') }}" alt="Spaceman" title="Spaceman">
+            <div id="previews">
+                <h2 id="effect_title">"Selected effect will be displayed here"</h2>
+                <div id="preview_video">Select effect to view</div>
+                <ul id="select_preview">
+                    <li id="zoom">Zoom-In</li>
+                    <li id="circular">Circular pan</li>
+                    <li id="swing">Swing</li>
+                    <li id="dolly">Dolly zoom</li>
+                </ul>
+            </div>
+        </div>
+        <div id="right">
+            <h2 id="create_label">Select image and download</h2>
             <form id="upload_image" method="post" enctype="multipart/form-data" action="{{url_for('upload_image')}}">
                 <input id="choose_image" type="file" name="image" accept="image/*"  required/>
                 <div id="imagePreview">Choose image</div>
                 <button id="upload" type="submit" style="display: none;">Upload image</button>
             </form>
-            <button id="download">Download</button>
+            <h2 id="effect_title_right">"Selected effect will be displayed here"</h2>
+            <div id="image_effect_select">
+                <ul id="select_effect">
+                    <li id="zoom">Zoom-In</li>
+                    <li id="circular">Circular pan</li>
+                    <li id="swing">Swing</li>
+                    <li id="dolly">Dolly zoom</li>
+                </ul>
+                <button id="download">Download</button>
+            </div>
         </div>
     </div>
-
-    <div id="bottom">
-        <h2 id="effect_preview_label"> Preview effects</h2>
-        <div id="previews">
-            <div id="preview_video">Select effect to view</div>
-            <ul id="select_preview">
-                <li id="zoom">Zoom-In</li>
-                <li id="circular">Circular pan</li>
-                <li id="swing">Swing</li>
-                <li id="dolly">Dolly zoom</li>
-            </ul>
-        </div>
-    </div>
-
 {% endblock %}

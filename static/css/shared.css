@@ -7,7 +7,6 @@ body {
     text-shadow: 0 0 10px #c7c7c7;
     border-color: #2c2f31;
     text-align: center;
-
 }
 
 h1,h2 {
@@ -76,22 +75,23 @@ li{
 }
 #download.activate{
     pointer-events: all;
-    background: #ff66c4;
-    color: #1e1e1e;
     border-radius: 20px;
+    background-color: #e055b0;
     box-shadow: 0 0 10px #ff66c4;
     transition: background-color 0.2s ease, color 0.2s ease;
 
 }
 #download{
     pointer-events: none;
+    color: #1e1e1e;
+    border-radius: 20px;
     background-color: #9a4d6a;
     color: rgba(30,30,30,0.71);
 }
 #download.activate:hover {
-  background-color: #e055b0;
-  box-shadow: 0 0 15px #e055b0;
-  cursor: pointer;
+    background-color: #ff66c4;
+    box-shadow: 0 0 15px #e055b0;
+    cursor: pointer;
 }
 footer{
         text-shadow: 0 0 10px #c7c7c7;

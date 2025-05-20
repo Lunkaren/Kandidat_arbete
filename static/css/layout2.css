@@ -1,28 +1,48 @@
-#bottom{
+#both{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 50px;
+}
+#left, #right{
+    width: 45%;
+    max-width: 600px;
+    background-color: rgba(59,27,100,0.25);
     display: flex;
     justify-content: center;
     flex-direction: column;
 }
+#spaceman{
+    width: 400px;
+    height: 400px;
+    margin: auto;
+}
 #image_effect_select{
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    margin: auto;
 }
 ul{
+    margin: auto;
     list-style: none;
     align-content: center;
+    padding: 0;
+}
+#preview_video {
+    margin: auto;
 }
 #select_effect{
-        height: 370px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 15px;
 }
 #select_effect li {
     background-color: rgba(114,215,230);
-    margin-right: 50px;
 }
 #select_effect li:hover {
     box-shadow: 0 0 20px rgba(121,240,255,0.7);
-}
-#effect_preview_label{
-    margin-top: 200px;
 }
 #previews{
     display: flex;
@@ -32,4 +52,10 @@ ul{
 #select_preview{
     display: flex;
     flex-direction: row;
+    margin: 15px auto 15px auto;
+}
+#download{
+    height: 100px;
+    font-size: large;
+
 }
