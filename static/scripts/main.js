@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
     const previewContainer = document.getElementById("preview_video");
     const previewList = document.getElementById("previews");
+    const titleElement = document.getElementById("effect_title");
+    const titleElement2 = document.getElementById("effect_title_top");
+
 
     const videoMap = {
         zoom:     { title: "Zoom-In",       path: "/videos/zoom.mp4" },
@@ -13,11 +16,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const li = e.target.closest("li");
         if (!li || !videoMap[li.id]) return;
 
-        const { path } = videoMap[li.id];
+        const { title, path } = videoMap[li.id];
 
+        titleElement.textContent = title;
+        titleElement2.textContent = title;
         previewContainer.innerHTML = "";
 
         const videoElement = document.createElement("video");
+
         videoElement.src = path;
         videoElement.controls = false;
         videoElement.width = 500;
