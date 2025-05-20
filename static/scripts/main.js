@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const previewContainer = document.getElementById("preview_video");
     const previewList = document.getElementById("previews");
     const titleElement = document.getElementById("effect_title");
-    const titleElement2 = document.getElementById("effect_title_top");
+    const titleElement2 = document.getElementById("effect_title_right");
 
 
     const videoMap = {
