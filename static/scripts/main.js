@@ -19,7 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const { title, path } = videoMap[li.id];
 
         titleElement.textContent = title;
-        titleElement2.textContent = title;
+        if (titleElement2) {
+            titleElement2.textContent = title;
+        }
         previewContainer.innerHTML = "";
 
         const videoElement = document.createElement("video");
